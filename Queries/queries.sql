@@ -43,3 +43,14 @@ WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 
 select * from retirement_info; 
 And (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
+SELECT ri.emp_no, 
+	ri.first_name, 
+	ri.last_name, 
+	d.dept_name
+INTO sales_emp
+FROM retirement_info as ri
+INNER JOIN dept_emp as de
+	ON (ri.emp_no = de.emp_no)
+INNER JOIN departments as d 
+	on (de.dept_no = d.dept_no)
+WHERE (d.dept_name = ('Sales'));
